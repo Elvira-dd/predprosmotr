@@ -10,9 +10,13 @@
 </div>
 <div>
 
-<h2>Add a comment:</h2>
-
-<%= render "comments/form" %>
-
-<h2>Comments</h2>
-<%= render @post.comments %>
+<div>
+  <% if @post.is_comments_open %>
+    <div>
+      <h2>Add a comment:</h2>
+      <%= render "comments/form" %>
+      <h2>Comments</h2>
+      <%= render @post.comments %>
+    </div>
+  <% end %>
+</div>

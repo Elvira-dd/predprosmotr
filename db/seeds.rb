@@ -2572,8 +2572,9 @@ def create_title
 def create_post(quantity)
     Issue.all.each do |issue|
         i = 1
+        boolComment = [true, false].sample
         quantity.to_a.sample.times do 
-            post = issue.posts.create!(title: create_title, content: create_sentence, link: "https://music.yandex.ru/album/#{issue.podcast.name}/#{i}", hashtag: create_title)
+            post = issue.posts.create!(title: create_title, content: create_sentence, link: "https://music.yandex.ru/album/#{issue.podcast.name}/#{i}", hashtag: create_title, is_comments_open: boolComment)
 puts "Post with name #{post.title} for issue #{issue.name}"
             i += 1
         end
