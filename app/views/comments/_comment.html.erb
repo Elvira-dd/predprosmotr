@@ -1,0 +1,16 @@
+<div id="<%= dom_id comment %>">
+  <p>
+    <strong>Content:</strong>
+    <%= comment.content %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= comment.created_at %>
+  </p>
+
+  <p>
+  <%= link_to 'Destroy Comment', [comment.post, comment], data: { turbo_stream: false, turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</p>
+
+</div>
