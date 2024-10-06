@@ -8,3 +8,19 @@
 
   <%= button_to "Destroy this podcast", @podcast, method: :delete %>
 </div>
+
+<h1>Issues</h1>
+
+<div id="issues">
+  <% @issues.each do |issue| %>
+    <%= render issue %>
+    <p>
+     <%= link_to "Show this issue", podcast_issue_path(@podcast, issue) %>
+
+    </p>
+  <% end %>
+</div>
+
+<h1>New issue</h1>
+
+<%= render "issues/form", issue: @issue %>

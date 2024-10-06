@@ -8,6 +8,7 @@ class PodcastsController < ApplicationController
 
   # GET /podcasts/1 or /podcasts/1.json
   def show
+    @issues = Issue.all
   end
 
   # GET /podcasts/new

@@ -1,16 +1,4 @@
 <%= form_with(model: podcast) do |form| %>
-  <% if podcast.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(podcast.errors.count, "error") %> prohibited this podcast from being saved:</h2>
-
-      <ul>
-        <% podcast.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>

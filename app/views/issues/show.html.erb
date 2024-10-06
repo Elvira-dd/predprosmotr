@@ -3,8 +3,9 @@
 <%= render @issue %>
 
 <div>
-  <%= link_to "Edit this issue", edit_issue_path(@issue) %> |
-  <%= link_to "Back to issues", issues_path %>
+  <%= link_to "Edit this issue", edit_podcast_issue_path(@issue.podcast, @issue) %> |
+  <%= link_to "Back to issues", podcast_issues_path(@issue.podcast) %>
 
-  <%= button_to "Destroy this issue", @issue, method: :delete %>
+  <%= button_to "Destroy this issue", [@issue.podcast, @issue], method: :delete %>
 </div>
+

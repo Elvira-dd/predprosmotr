@@ -1,8 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Все подкасты" %>
-
-<h1>Podcasts</h1>
+<h1>Authorpage#index</h1>
+<p>Find me in app/views/authorpage/index.html.erb</p>
 
 <div id="podcasts">
   <% @podcasts.each do |podcast| %>
@@ -13,7 +10,6 @@
   <% end %>
 </div>
 
-
 <h1>New podcast</h1>
 
-<%= render "form", podcast: @podcast %>
+<%= render "podcasts/form", podcast: @podcast %>

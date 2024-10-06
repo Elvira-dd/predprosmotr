@@ -65,6 +65,22 @@ class IssuesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def issue_params
-      params.require(:issue).permit(:name, :link, :podcast, :references)
+      params.require(:issue).permit(:name, :link, :podcastt, :references)
     end
+end
+
+class IssuesController < ApplicationController
+  def create
+    @podcast = Podcast.find(params[:podcast_id])
+    #@comment = @podcast.comments.create(params[:comment])
+    @issue = @podcast.issues.create(params[:issue].permit(:name, :link))
+    redirect_to podcast_path(@podcast)
+  end
+
+  def destroy
+    @podcast = Podcast.find(params[:podcast_id])
+    @issue = @podcast.issues.find(params[:id])
+    @issue.destroy
+    redirect_to podcast_path(@podcast)
+  end
 end
