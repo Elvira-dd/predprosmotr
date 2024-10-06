@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_06_195610) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_06_213211) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.datetime "date"
@@ -47,6 +47,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_195610) do
     t.string "hashtag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "issue_id", null: false
+    t.index ["issue_id"], name: "index_posts_on_issue_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -59,5 +61,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_195610) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "issues", "podcasts"
+  add_foreign_key "posts", "issues"
   add_foreign_key "tags", "podcasts"
 end

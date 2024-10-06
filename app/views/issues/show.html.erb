@@ -1,11 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @issue %>
 
 <div>
-  <%= link_to "Edit this issue", edit_podcast_issue_path(@issue.podcast, @issue) %> |
-  <%= link_to "Back to issues", podcast_issues_path(@issue.podcast) %>
+  <h1><%= @issue.name %></h1>
+  <h3><%= @issue.link %></h3>
 
-  <%= button_to "Destroy this issue", [@issue.podcast, @issue], method: :delete %>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <h2><%= link_to post.title, post %></h2>
+        <p><%= post.content %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
-
