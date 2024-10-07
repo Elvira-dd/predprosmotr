@@ -2531,7 +2531,6 @@ end
 def create_podcast(quantity)
     quantity.times do 
         podcast = Podcast.create!(name: @companies.sample[:name])
-        puts "Project for company #{podcast.name}"
     end
 end
 
@@ -2541,7 +2540,6 @@ def create_issues(quantity)
       quantity.to_a.sample.times do 
         issue = podcast.issues.create!(name: "Выпуск #{i}", link: "https://music.yandex.ru/album/#{podcast.name}/#{i}")
         i += 1
-        puts "Swatch with name #{issue.name} for podcast #{issue.podcast.name}"
       end
     end
   end
@@ -2575,7 +2573,6 @@ def create_post(quantity)
         boolComment = [true, false].sample
         quantity.to_a.sample.times do 
             post = issue.posts.create!(title: create_title, content: create_sentence, link: "https://music.yandex.ru/album/#{issue.podcast.name}/#{i}", hashtag: create_title, is_comments_open: boolComment)
-puts "Post with name #{post.title} for issue #{issue.name}"
             i += 1
         end
     end
