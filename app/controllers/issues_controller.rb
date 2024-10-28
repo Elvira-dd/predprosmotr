@@ -9,7 +9,8 @@ class IssuesController < ApplicationController
   # GET /issues/1 or /issues/1.json
   def show
     @issue = Issue.find(params[:id])
-    @posts = @issue.posts
+  @posts = @issue.posts  # Assuming `Issue` has_many :posts
+  @post = @issue.posts.build
   end
 
   # GET /issues/new

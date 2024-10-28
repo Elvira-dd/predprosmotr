@@ -1,4 +1,11 @@
-<div id="<%= dom_id comment %>">
+<% if comment.persisted? %>
+<p>
+    <strong>User:</strong>
+    <%= comment.user ? comment.user.email : "Unknown User" %>
+  </p>
+<p>
+    <%= comment.post_id %>
+</p>
   <p>
     <strong>Content:</strong>
     <%= comment.content %>
@@ -13,4 +20,4 @@
   <%= link_to 'Destroy Comment', [comment.post, comment], data: { turbo_stream: false, turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </p>
 
-</div>
+<% end %>

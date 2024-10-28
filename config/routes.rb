@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   
   resources :podcasts do 
     resources :issues 
-
   end
+  
+  resources :issue do 
+    resources :posts 
+  end
+
   resources :posts do
     resources :comments
   end

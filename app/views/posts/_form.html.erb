@@ -1,11 +1,11 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
+<%= form_with(model: [@issue, @post]) do |form| %>
+  <% if @post.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @post.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
         <% end %>
       </ul>
     </div>
@@ -20,7 +20,6 @@
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
   </div>
-
 
   <div>
     <%= form.label :is_comments_open, style: "display: block" %>
