@@ -7,10 +7,12 @@
 
   <div id="posts">
     <% @posts.each do |post| %>
+    <% if post.persisted? %>
       <div class="post">
         <h2><%= link_to post.title, post %></h2>
         <p><%= post.content %></p>
       </div>
+      <% end %>
     <% end %>
   </div>
   <div>

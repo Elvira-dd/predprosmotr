@@ -26,18 +26,19 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_user.comments.new(comment_params)
-
+    @comment = @post.comments.new(comment_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        puts "Comment saved successfully!"  # Debugging line
+        format.html { redirect_to @post, notice: "Comment was successfully created." }
       else
+        puts "Comment failed to save: #{@comment.errors.full_messages}"  # Debugging line
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
+  
+  
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
@@ -70,22 +71,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:content, :date, :post_id)
+        params.require(:comment).permit(:content)
     end
-end
-
-class CommentsController < ApplicationController
-  def create
-    @post = Post.find(params[:post_id])
-    #@comment = @post.comments.create(params[:comment])
-    @comment = @post.comments.create(params[:comment].permit(:content, :date))
-    redirect_to post_path(@post)
-  end
-
-  def destroy
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    redirect_to post_path(@post)
-  end
 end
