@@ -8,7 +8,7 @@ class PodcastsController < ApplicationController
 
   # GET /podcasts/1 or /podcasts/1.json
   def show
-    @issues = Issue.all
+    @issues = Issue.where(link: @podcast.name)
   end
 
   # GET /podcasts/new

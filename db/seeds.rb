@@ -2538,7 +2538,7 @@ def create_issues(quantity)
     Podcast.all.each do |podcast|
       i = 1
       quantity.to_a.sample.times do 
-        issue = podcast.issues.create!(name: "Выпуск #{i}", link: "https://music.yandex.ru/album/#{podcast.name}/#{i}")
+        issue = podcast.issues.create!(name: "Выпуск #{i}", link: podcast.name)
         i += 1
       end
     end

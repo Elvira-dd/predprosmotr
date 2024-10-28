@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "authorpage/index"
   get "main/index"
   resources :tags
