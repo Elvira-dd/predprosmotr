@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "authorpage/index"
+  get "about_us/index"
   get "main/index"
-  resources :tags
   
+  
+  namespace :admin do
   resources :podcasts do 
     resources :issues 
     get 'issues', to: 'issues#issues_for_podcast', as: 'issues_for'
@@ -16,10 +17,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  
-  namespace :admin do
-    resources :posts
-  end
+  resources :tags  
+end
+
 
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

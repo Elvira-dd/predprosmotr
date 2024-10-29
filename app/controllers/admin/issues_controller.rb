@@ -1,6 +1,6 @@
-class IssuesController < ApplicationController
+class Admin::IssuesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_issue, only: %i[ show edit update destroy ]
+  before_action :set_issue, only: %i[show edit update destroy]
 
   # GET /issues or /issues.json
   def index
@@ -63,10 +63,14 @@ class IssuesController < ApplicationController
 
   # DELETE /issues/1 or /issues/1.json
   def destroy
-    @issue.destroy!
-
+    @issue = Issue.find(params[:id])
+  
+    # Optional: If you want to delete associated posts before deleting the issue
+    @issue.posts.destroy_all 
+  
+    @issue.destroy
     respond_to do |format|
-      format.html { redirect_to issues_path, status: :see_other, notice: "Issue was successfully destroyed." }
+      format.html { redirect_to admin_issue_path, notice: "Issue was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -83,18 +87,18 @@ class IssuesController < ApplicationController
     end
 end
 
-class IssuesController < ApplicationController
-  def create
-    @podcast = Podcast.find(params[:podcast_id])
-    #@comment = @podcast.comments.create(params[:comment])
-    @issue = @podcast.issues.create(params[:issue].permit(:name, :link))
-    redirect_to podcast_path(@podcast)
-  end
+# class Admin::IssuesController < ApplicationController
+#   def create
+#     @podcast = Podcast.find(params[:podcast_id])
+#     #@comment = @podcast.comments.create(params[:comment])
+#     @issue = @podcast.issues.create(params[:issue].permit(:name, :link))
+#     redirect_to podcast_path(@podcast)
+#   end
 
-  def destroy
-    @podcast = Podcast.find(params[:podcast_id])
-    @issue = @podcast.issues.find(params[:id])
-    @issue.destroy
-    redirect_to podcast_path(@podcast)
-  end
-end
+#   def destroy
+#     @podcast = Podcast.find(params[:podcast_id])
+#     @issue = @podcast.issues.find(params[:id])
+#     @issue.destroy
+#     redirect_to podcast_path(@podcast)
+#   end
+# end

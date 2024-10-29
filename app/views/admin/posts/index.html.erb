@@ -8,7 +8,7 @@
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
-      <%= link_to "Show this post", post %>
+      <%= link_to "Show this post", admin_post_path(post) %>
     </p>
   <% end %>
 </div>

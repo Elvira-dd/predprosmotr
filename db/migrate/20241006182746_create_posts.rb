@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration[7.2]
       t.boolean :is_comments_open
       t.string :link
       t.string :hashtag
-
+      
       t.timestamps
     end
   end

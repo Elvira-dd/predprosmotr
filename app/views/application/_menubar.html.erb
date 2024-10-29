@@ -1,10 +1,10 @@
 <nav class="Menu">
   <%= link_to "Главная", root_url%>
-   <%= link_to "Подкасты", podcasts_url%>
-   <%= link_to "Посты", posts_url%>
+  <%= link_to "О нас", about_us_index_url%>
    
    <% if user_signed_in? && current_user.admin? %>
-    <%= link_to "Все посты", admin_posts_url%>
+    <%= link_to "Подкасты", admin_podcasts_url%>
+   <%= link_to "Посты", admin_posts_url%>
     <%end%>
    <div>
    <p style="color: red"> <%= alert %> </p>
