@@ -5,7 +5,13 @@ class IssuesController < ApplicationController
   def index
     @issues = Issue.all
   end
-
+  
+  def issues_for_podcast
+    @issues = Issue.where(podcast_id: params[:podcast_id]) # Замените на правильную ассоциацию, если нужно
+    respond_to do |format|
+      format.json { render json: @issues }
+    end
+  end
   # GET /issues/1 or /issues/1.json
   def show
     @issue = Issue.find(params[:id])

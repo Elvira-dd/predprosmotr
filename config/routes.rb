@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
   resources :podcasts do 
     resources :issues 
+    get 'issues', to: 'issues#issues_for_podcast', as: 'issues_for'
   end
   
   resources :issue do 

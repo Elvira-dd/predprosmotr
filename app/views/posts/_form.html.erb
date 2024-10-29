@@ -30,6 +30,56 @@
     <%= form.label :link, style: "display: block" %>
     <%= form.text_field :link %>
   </div>
+<div>
+  <%= form.label :podcast_id, style: "display: block" %>
+  <%= form.collection_select :podcast_id, Podcast.order(:name), :id, :name, { prompt: 'Выберите подкаст' }, { id: 'podcast_select' } %>
+</div>
+
+<div>
+  <%= form.label :issue_id, style: "display: block" %>
+  <%= form.collection_select :issue_id, [], :id, :name, { prompt: 'Сначала выберите подкаст' }, { id: 'issue_select' } %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const podcastSelect = document.getElementById('podcast_select');
+    const issueSelect = document.getElementById('issue_select');
+
+    podcastSelect.addEventListener('change', function() {
+      const podcastId = this.value;
+
+      // Очистить выпуски
+      issueSelect.innerHTML = ''; // Убираем старые значения
+
+      // Добавляем опцию "Сначала выберите выпуск"
+      const promptOption = document.createElement('option');
+      promptOption.text = 'Сначала выберите выпуск';
+      promptOption.value = ''; // Значение пустое
+      issueSelect.add(promptOption);
+
+      if (podcastId) {
+        fetch(`/podcasts/${podcastId}/issues`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // Заполняем новый список выпусков
+            data.forEach(issue => {
+              const option = document.createElement('option');
+              option.value = issue.id;
+              option.text = issue.name;
+              issueSelect.add(option);
+            });
+          })
+          .catch(error => console.error('Ошибка:', error));
+      }
+    });
+  });
+</script>
+
 
   <div>
     <%= form.label :hashtag, style: "display: block" %>
