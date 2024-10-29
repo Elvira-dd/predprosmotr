@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_post, only: %i[ show edit update destroy ]
+  
 
   # GET /posts or /posts.json
   def index
-    @posts = current_user.posts
+    if current_user
+      @posts = current_user.posts
+    else
+    @posts = Post.where(is_comments_open: false)
+    end
   end
 
   # GET /posts/1 or /posts/1.json

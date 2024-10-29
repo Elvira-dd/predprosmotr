@@ -1,0 +1,41 @@
+
+<p>
+    <strong>User:</strong>
+    <%=  post.user.email %>
+  </p>
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+  <p>
+    <strong>Belong to issue:</strong>
+    <%= post.issue.podcast.name %> - <%= post.issue.name %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= post.content %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= post.created_at %>
+  </p>
+
+  <p>
+    <strong>Is comments open:</strong>
+    <%= post.is_comments_open %>
+  </p>
+
+  <p>
+    <strong>Link:</strong>
+    <%= post.link %>
+  </p>
+
+  <p>
+    <strong>Hashtag:</strong>
+    <%= post.hashtag %>
+  </p>
+
+</div>
+

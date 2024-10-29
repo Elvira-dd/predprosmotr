@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_issue, only: %i[ show edit update destroy ]
 
   # GET /issues or /issues.json
@@ -15,8 +16,12 @@ class IssuesController < ApplicationController
   # GET /issues/1 or /issues/1.json
   def show
     @issue = Issue.find(params[:id])
-  @posts = @issue.posts  # Assuming `Issue` has_many :posts
-  @post = @issue.posts.build
+  @posts = if user_signed_in?
+             @issue.posts
+           else
+             @issue.posts.where(is_comments_open: false)
+           end
+  @post = @issue.posts.new # инициализируем пустой пост для формы
   end
 
   # GET /issues/new
