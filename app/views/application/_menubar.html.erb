@@ -6,6 +6,11 @@
     <%= link_to "Подкасты", admin_podcasts_url%>
    <%= link_to "Посты", admin_posts_url%>
     <%end%>
+
+    <%= link_to "Подкастыdwf", podcasts_url%>
+        <% if user_signed_in? %>
+   <%= link_to "Посты", posts_url%>
+    <%end%>
    <div>
    <p style="color: red"> <%= alert %> </p>
 

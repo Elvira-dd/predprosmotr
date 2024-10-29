@@ -4,11 +4,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Post, is_comments_open: false
+    can :read, Post
     can :read, Podcast
     can :read, Issue
 
     return unless user.present?
+    can :read, Podcast
+    can :read, Issue
     can :manage, Post, user: user
     can :manage, Comment, user: user
 

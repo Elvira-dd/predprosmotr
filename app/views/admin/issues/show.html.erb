@@ -7,7 +7,7 @@
 
   <div id="posts">
     <% @posts.each do |post| %>
-      <% if post.persisted? && (user_signed_in? || !post.is_comments_open) %>
+      <% if post.persisted? %>
         <div class="post">
           <h2><%= link_to post.title, admin_post_path(post) %></h2> 
           <p><%= post.content %></p>
@@ -15,7 +15,6 @@
       <% end %>
     <% end %>
   </div>
-
 
 
   <div>

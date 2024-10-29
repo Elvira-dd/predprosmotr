@@ -3,6 +3,19 @@ Rails.application.routes.draw do
   get "about_us/index"
   get "main/index"
   
+  resources :podcasts do 
+    resources :issues 
+    get 'issues', to: 'issues#issues_for_podcast', as: 'issues_for'
+  end
+  
+  resources :issue do 
+    resources :posts 
+  end
+
+  resources :posts do
+    resources :comments
+  end
+  resources :tags  
   
   namespace :admin do
   resources :podcasts do 
