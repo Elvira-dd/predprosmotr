@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @issue = Issue.find(params[:issue_id])
+    @issue = Issue.find(params[:issue_id]) # Ensure you have access to the issue
     @post = @issue.posts.new(post_params.merge(user_id: current_user.id))
   
     if @post.save
