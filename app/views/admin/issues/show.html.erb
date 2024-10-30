@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+
 
 <div>
   <h1><%= @issue.name %></h1>
@@ -8,7 +8,7 @@
   <div id="posts">
     <% @posts.each do |post| %>
       <% if post.persisted? %>
-        <div class="post">
+        <div class="shortPost">
           <h2><%= link_to post.title, admin_post_path(post) %></h2> 
           <p><%= post.content %></p>
         </div>
@@ -17,8 +17,8 @@
   </div>
 
 
-  <div>
-    <h2>Add a post:</h2>
+  <div class="addPostForIssue"> 
+    <h2>Добавить пост к выпуску:</h2>
     <%= render "admin/posts/form", post: Post.new %>
   </div>
 </div>

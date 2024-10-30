@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "about_us/index"
   get "main/index"
   
+  resources :subscriptions, only: [:create]
   resources :podcasts do 
     resources :issues 
     get 'issues', to: 'issues#issues_for_podcast', as: 'issues_for'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
     resources :issues 
     get 'issues', to: 'issues#issues_for_podcast', as: 'issues_for'
   end
-  
+  resources :subscriptions
   resources :issue do 
     resources :posts 
   end

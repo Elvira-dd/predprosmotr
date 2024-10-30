@@ -5,11 +5,7 @@ class Admin::PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    if current_user
-      @posts = current_user.posts
-    else
-    @posts = Post.where(is_comments_open: false)
-    end
+    @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json

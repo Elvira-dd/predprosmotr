@@ -1,23 +1,17 @@
+<div class="cardComment">
 <% if comment.persisted? %>
-<p>
-    <strong>User:</strong>
+<h3 class="commenter">
     <%= comment.user ? comment.user.email : "Unknown User" %>
-  </p>
-<p>
-    <%= comment.post_id %>
-</p>
+  </h3>
   <p>
-    <strong>Content:</strong>
     <%= comment.content %>
   </p>
 
-  <p>
-    <strong>Date:</strong>
-    <%= comment.created_at %>
-  </p>
+  <div class="editingComment">
+  <%= button_to 'Edit Comment', edit_admin_post_comment_path(comment.post, comment), method: :get, class: "editButton" %>
 
-  <p>
-  <%= link_to 'Destroy Comment', [:admin, comment.post, comment], data: { turbo_stream: false, turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-</p>
+  <%= button_to 'Destroy Comment', [:admin, comment.post, comment], method: :delete, data: { turbo_stream: false, confirm: "Are you sure?" }, class: "destroyButton" %>
+</div>
 
 <% end %>
+</div>

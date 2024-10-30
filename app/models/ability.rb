@@ -7,6 +7,7 @@ class Ability
     can :read, Post
     can :read, Podcast
     can :read, Issue
+    can :create, Subscription
 
     return unless user.present?
     can :read, Podcast

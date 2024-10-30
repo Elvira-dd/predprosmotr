@@ -1,11 +1,6 @@
-<div id="<%= dom_id podcast %>">
+<div id="<%= dom_id podcast %>" class="cardPodcast">
+      <%= link_to podcast.name, admin_podcast_path(podcast) %>
   <p>
-    <strong>Name:</strong>
-    <%= podcast.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
     <%= podcast.description %>
   </p>
 

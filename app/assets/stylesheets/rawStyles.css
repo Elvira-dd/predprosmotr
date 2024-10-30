@@ -1,0 +1,188 @@
+.allPodcastsPage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 3vh;
+  .cardPodcast {
+    display: block;
+    width: 24vw;
+    height: max-content;
+    padding: 2vw;
+    background-color: lightcyan;
+    a {
+      font-size: 32px;
+      line-height: 110%;
+      letter-spacing: 3%;
+      font-weight: 500;
+      color: black;
+    }
+  }
+}
+.cardPodcast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  a {
+    font-size: 40px;
+    line-height: 110%;
+    letter-spacing: 3%;
+    font-weight: 500;
+    color: black;
+  }
+}
+.podcastEditing {
+  margin-top: 3vh;
+}
+.podcastsIssues {
+  margin-top: 5vh;
+}
+.destroyButton {
+  width: 10vw;
+  height: 4vh;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 100px;
+  margin-top: 1vh;
+}
+.destroyButton:hover {
+  background-color: red;
+  border: 2px solid red;
+  color: white;
+  cursor: pointer;
+}
+.editButton {
+  width: 10vw;
+  height: 4vh;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 100px;
+  margin-top: 1vh;
+}
+.editButton:hover {
+  background-color: green;
+  border: 2px solid green;
+  color: white;
+  cursor: pointer;
+}
+
+.allIssuesPage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 3vh;
+  .cardIssue {
+    display: block;
+    width: 24vw;
+    height: 27vh;
+    padding: 2vw;
+    background-color: rgb(252, 225, 229);
+    a {
+      font-size: 32px;
+      line-height: 110%;
+      letter-spacing: 3%;
+      font-weight: 500;
+      color: black;
+    }
+  }
+}
+
+.shortPost {
+  margin-top: 2vh;
+  padding: 1vw;
+  background-color: #d9faff;
+}
+.addPostForIssue {
+  margin-top: 7vh;
+}
+.classicInput {
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+  color: #000000;
+  height: 5vh;
+  width: 40vw;
+  background-color: #f1f1f1;
+  padding: 24px 24px 16px 24px;
+  border: 0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.createPostForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+}
+.checkBoxInput {
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+  color: #000000;
+  display: flex;
+  flex-direction: row;
+  height: 5vh;
+  width: 40vw;
+  padding: 24px;
+  margin-bottom: 24px;
+  background-color: #f1f1f1;
+  align-items: center;
+  label {
+    margin-left: 1vw;
+  }
+}
+.allPostsPage {
+  .cardPost {
+    padding: 2vh;
+    background-color: #f1f1f1;
+    margin-bottom: 1vh;
+    a {
+      font-size: 40px;
+      line-height: 110%;
+      letter-spacing: 3%;
+      font-weight: 500;
+    }
+    .postContent {
+      margin-top: 3vh;
+    }
+  }
+}
+
+.cardPost {
+  a {
+    font-size: 40px;
+    line-height: 110%;
+    letter-spacing: 3%;
+    font-weight: 500;
+  }
+  .postContent {
+    margin-top: 3vh;
+  }
+}
+.postEditing {
+  margin-top: 3vh;
+}
+.postsCommentSection {
+  margin-top: 7vh;
+  h3 {
+    margin-bottom: 2vh;
+  }
+}
+.new_comment {
+  display: flex;
+  flex-direction: column;
+}
+.cardComment {
+  margin-top: 2vh;
+  background-color: #f1f1f1;
+  padding: 2vw;
+  .editingComment {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+}

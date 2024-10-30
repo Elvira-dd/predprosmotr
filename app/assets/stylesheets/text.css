@@ -1,0 +1,40 @@
+body {
+  font-family: 'FormaDJR';
+}
+h1 {
+  font-size: 40px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 500;
+  &.bold {
+    font-weight: 600;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 500;
+}
+h3 {
+  font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 500;
+}
+
+p {
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+}
+a {
+  font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}

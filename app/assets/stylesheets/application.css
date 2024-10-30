@@ -4,7 +4,10 @@
 *= require reset
 *= require vars
 *= require fonts
+*= require text
 *= require basics
+*= require form
+*= require rawStyles
 *= require_tree ./components
 
 */

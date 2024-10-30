@@ -1,0 +1,5 @@
+<%= form_with(model: Subscription.build) do |form| %>
+    <%= form.email_field :email, placeholder: "Email", class: 'mainFormEmailInput'%>
+    <%= form.submit "Отправить", class:"formButton"%>
+  <%end%>
+

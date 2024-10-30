@@ -1,24 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "<- Back to podcasts", admin_podcasts_path %>
 
 <%= render @podcast %>
 
-<div>
-  <%= link_to "Edit this podcast", edit_admin_podcast_path(@podcast) %> |
-  <%= link_to "Back to podcasts", admin_podcasts_path %>
+<div class="podcastEditing">
+  <%= link_to "Edit this podcast", edit_admin_podcast_path(@podcast) %> 
 </div>
 
-
-<h1>Issues</h1>
-
-<div id="issues">
+<div class="podcastsIssues">
+<h1>Выпуски подкаста</h1>
+<div id="issues" class="allIssuesPage">
   <% @issues.each do |issue| %>
     <%= render issue %>
-    <p>
-<p>
-  <%= link_to "Show this issue", admin_podcast_issue_path(@podcast, issue) %>
-  <%= button_to "Destroy this issue", admin_podcast_issue_path(@podcast, issue), method: :delete, data: { confirm: "Are you sure?" } %>
-</p>
-
-    </p>
   <% end %>
+</div>
 </div>

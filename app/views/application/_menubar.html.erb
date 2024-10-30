@@ -1,25 +1,24 @@
-<nav class="Menu">
-  <%= link_to "Главная", root_url%>
+<div class="Menu">
+  <%= link_to "Промо", root_url%>
   <%= link_to "О нас", about_us_index_url%>
-   
-   <% if user_signed_in? && current_user.admin? %>
-    <%= link_to "Подкасты", admin_podcasts_url%>
-   <%= link_to "Посты", admin_posts_url%>
-    <%end%>
-
-    <%= link_to "Подкастыdwf", podcasts_url%>
-        <% if user_signed_in? %>
-   <%= link_to "Посты", posts_url%>
-    <%end%>
-   <div>
-   <p style="color: red"> <%= alert %> </p>
-
-  <% if user_signed_in? %>
- <%= link_to current_user.email, edit_user_registration_path %>
+  
+  <% if user_signed_in? && !current_user.admin %>
+    <%= link_to "Подкасты", podcasts_url%>
+    <%= link_to "Посты", posts_url%>
+    <%= link_to current_user.email, edit_user_registration_path %>
   <%= link_to "Выйти", destroy_user_session_path, data: { "turbo-method": :delete } %>
-<% else %>
-  <%= link_to "Войти", new_user_session_path %>
-  <%= link_to "Зарегаться", new_user_registration_path %>
-<% end %>
-   </div>
-  </nav>
+  <%elsif user_signed_in? && current_user.admin? %>
+    <%= link_to "Подкасты", admin_podcasts_url%>
+    <%= link_to "Посты", admin_posts_url%>
+    <%= link_to "Подписки", admin_subscriptions_url %>
+    <%
+=begin%>
+ <%= link_to current_user.email, edit_user_registration_path %>
+    <%= link_to "Выйти", destroy_user_session_path, data: { "turbo-method": :delete } %> 
+<%
+=end%>
+    <%else%>
+    <%= link_to "Войти", new_user_session_path %>
+  <%end%>
+  </div>
+<p style="color: red"> <%= alert %> </p>

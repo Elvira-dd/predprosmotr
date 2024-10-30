@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
+
 
 <% content_for :title, "Все посты" %>
 
-<h1>Posts</h1>
+<h1>Посты</h1>
 
-<div id="posts">
+<div id="posts" class="allPostsPage">
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
-      <%= link_to "Show this post", admin_post_path(post) %>
+      
     </p>
   <% end %>
 </div>

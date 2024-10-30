@@ -1,0 +1,107 @@
+.mainForm {
+  width: 100%;
+  height: 100vh;
+  background-image: url('<%= asset_path("background.gif") %>'); /* путь к гифке */
+  background-size: auto;
+  background-repeat: norepeat;
+  background-position: center;
+  transition: background-image 0.5s ease;
+  position: relative;
+  overflow: hidden
+}
+.mainForm video {
+    position: absolute; 
+        display: none; 
+    width: 110vw; 
+    height: auto; 
+    left: -5vw;
+    top: -3vh;
+    object-fit: contain; 
+    z-index: -1; 
+
+}
+
+.emailForm {
+position: relative;
+  z-index: 100000;
+  margin: 0 auto;
+   height: fit-content;
+    margin-top: 22vh;
+    padding: 6vw 6vw;
+  width: 42%;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+}
+.emailForm:hover {
+    background-color: #FAFBFB;
+}
+.mainFormEmailInput {
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+  color: #000000;
+  height: 5vh;
+  width: 40vw;
+  background-color: #f1f1f1;
+  padding: 24px 24px 16px 24px;
+  border: 0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.formButton {
+  font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+  color: #000000;
+  height: 10vh;
+  width: calc(40vw + 48px);
+  background-color: #f1f1f1;
+  border: 0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  
+}
+.formButton:hover{
+background-color: #FFD9FE;
+cursor: pointer;
+}
+.bgGif {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  //background-image: url(<%=asset_path('background.gif')%>);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.redirectButton {
+display:flex;
+    justify-content: center;
+    align-items: center;
+font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 3%;
+  font-weight: 400;
+  color: #000000;
+  height: 10vh;
+  width: calc(40vw + 48px);
+  background-color: #f1f1f1;
+  border: 0;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  text-decoration: none
+}
+.redirectButton:hover{
+background-color: #FFD9FE;
+cursor: pointer;
+}

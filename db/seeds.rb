@@ -2515,6 +2515,34 @@
 @raw_text = 'Подка́стинг[1] (англ. podcasting, от iPod и англ. broadcasting или от англ. personal on demand broadcasting[2] — повсеместное вещание, широковещание[источник не указан 98 дней]) — процесс создания и распространения звуковых или видеофайлов — подкастов. По форме подкасты похожи на радио- или телепередачи, существующие в виде файлов, которые загружаются с помощью интернета на устройство пользователя и проигрываются офлайн в удобное для слушателя время и в любом месте[3].Как правило, подкасты имеют определённую тематику и периодичность издания. Подписка на них оформляется через RSS или Atom.Подка́стом называется либо отдельный аудиофайл, либо регулярно обновляемая серия таких файлов, публикуемых на одном ресурсе Интернета, с возможностью подписки.Подка́стер — человек, который занимается подкастингом на любительской или профессиональной основе.Подка́ст-терминал — это сайт, поддерживающий хостинг медиафайлов и в какой-то степени автоматизирующий размещение записей и подписку на обновления. Является типом социальных медиа и схож с технологией видеоблогов и интернет-радио. Кроме аудио- и видеозаписи, может содержать запись речи в текстовом виде.Подка́ст-клиент (подкаст-менеджер) — это специализированное приложение для прослушивания подкастов[8]. Наиболее популярными приложениями в мире являются Apple Podcasts (предустановленный подкаст-клиент на iOS, iPadOS и macOS), Spotify, Pocket Casts, Google Podcasts, Overcast, Castro и другие. Они предоставляют одинаковую базовую функциональность, но могут различаться по интерфейсу и дополнительным функциям.С помощью подкаст-менеджеров можно подписываться на подкасты, получать уведомления о новых выпусках, скачивать эпизоды подкастов для оффлайн-прослушивания, настраивать автоматическое скачивание эпизодов, настраивать скорость воспроизведения подкастов без искажения речи. Также подкаст-клиенты могут автоматически вырезать паузы в речи, пропускать заставки в начале и в конце подкастов, сортировать эпизоды по спискам, усиливать голоса ведущих, синхронизировать воспроизведение между устройствами.Шоуноты и таймкоды — это текстовые материалы, которые могут сопровождать эпизоды подкастов[8]. Как правило, в шоунотах можно найти краткое описание эпизода, список тем, контакты, ссылки. Эта информация считывается подкаст-клиентами. Шоуноты могут содержать таймкоды — соответствия тем и времени их звучания в выпуске. Наличие таймкодов позволяет слушателям сразу перейти в выпуске к нужной теме.Главы (чаптерсы) — метаданные, которые указываются непосредственно в mp3-файле эпизода[8]. Если подкаст-менеджер поддерживает указание глав, то с их помощью слушатель может переходить от одной темы к другой, перелистывая их (как главы в книге). Главы могут содержать дополнительную информацию — изображения, ссылки и текст.'
 @words = @raw_text.downcase.gsub(/[—.—,«»:()]/, '').gsub(/  /, ' ').split(' ')
 
+def create_sentence
+  sentence_words = []
+
+  (10..30).to_a.sample.times do
+    sentence_words << @words.sample
+  end
+
+  sentence = sentence_words.join(' ').capitalize + '.'
+end
+def create_content
+  sentence_words = []
+
+  (30..80).to_a.sample.times do
+    sentence_words << @words.sample
+  end
+
+  sentence = sentence_words.join(' ').capitalize + '.'
+end
+
+def create_title
+    sentence_words = []
+  
+    (2..10).to_a.sample.times do
+      sentence_words << @words.sample
+    end
+  
+    sentence = sentence_words.join(' ').capitalize + '.'
+  end
 
 
 
@@ -2523,7 +2551,7 @@
     reset_db
     create_users(10)
     create_podcast(10)
-    create_issues(2..10)
+    create_issues(3..10)
     create_post(1..4)
     create_comments(1..6)
 end
@@ -2556,7 +2584,7 @@ end
 
 def create_podcast(quantity)
     quantity.times do 
-        podcast = Podcast.create!(name: @companies.sample[:name])
+        podcast = Podcast.create!(name: @companies.sample[:name], description: create_sentence)
     end
 end
 
@@ -2565,7 +2593,7 @@ def create_issues(quantity)
     Podcast.all.each do |podcast|
       i = 1
       quantity.to_a.sample.times do 
-        issue = podcast.issues.create!(name: "Выпуск #{i}", link: podcast.name)
+        issue = podcast.issues.create!(name: "Выпуск #{create_title}", link: podcast.name)
         i += 1
       end
     end
@@ -2576,25 +2604,7 @@ def create_issues(quantity)
 
 
 
-def create_sentence
-  sentence_words = []
 
-  (10..40).to_a.sample.times do
-    sentence_words << @words.sample
-  end
-
-  sentence = sentence_words.join(' ').capitalize + '.'
-end
-
-def create_title
-    sentence_words = []
-  
-    (2..10).to_a.sample.times do
-      sentence_words << @words.sample
-    end
-  
-    sentence = sentence_words.join(' ').capitalize + '.'
-  end
 
 def create_post(quantity)
     Issue.all.each do |issue|
@@ -2602,7 +2612,7 @@ def create_post(quantity)
         boolComment = [true, false].sample
         quantity.to_a.sample.times do 
           user = User.all.sample
-            post = issue.posts.create!(title: create_title, content: create_sentence, link: "https://music.yandex.ru/album/#{issue.podcast.name}/#{i}", hashtag: create_title, is_comments_open: boolComment, user: user)
+            post = issue.posts.create!(title: create_title, content: create_content, link: "https://music.yandex.ru/album/#{issue.podcast.name}/#{i}", hashtag: create_title, is_comments_open: boolComment, user: user)
             i += 1
         end
     end
