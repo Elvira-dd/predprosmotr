@@ -4,31 +4,40 @@ body {
 h1 {
   font-size: 40px;
   line-height: 110%;
-  letter-spacing: 3%;
+  letter-spacing: 0.7px;
   font-weight: 500;
   &.bold {
     font-weight: 600;
+  }
+  &.extra {
+    font-size: 64px;
   }
 }
 
 h2 {
   font-size: 32px;
   line-height: 110%;
-  letter-spacing: 3%;
+  letter-spacing: 0.7px;
   font-weight: 500;
 }
 h3 {
   font-size: 24px;
   line-height: 110%;
-  letter-spacing: 3%;
+  letter-spacing: 0.25px;
   font-weight: 500;
 }
 
 p {
   font-size: 20px;
   line-height: 110%;
-  letter-spacing: 3%;
+  letter-spacing: 0.25px;
   font-weight: 400;
+  &.small {
+    font-size: 14px;
+  }
+  &.bold {
+    font-weight: 600;
+  }
 }
 a {
   font-size: 24px;

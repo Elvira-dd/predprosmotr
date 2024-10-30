@@ -4,6 +4,7 @@
 *= require reset
 *= require vars
 *= require fonts
+*= require aboutus
 *= require text
 *= require basics
 *= require form
